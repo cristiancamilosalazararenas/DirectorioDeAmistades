@@ -7,7 +7,13 @@ public abstract class Persona {
     protected String correoElectronico;
     
     //Metodo constructor
-    public Persona(String nombre, String telefono, String correoElectronico) {
+    public Persona(String nombre, String telefono, String correoElectronico) throws IllegalArgumentException{
+        if (this.nombre.trim().isEmpty() || this.telefono.trim().isEmpty() || this.correoElectronico.trim().isEmpty()){
+            throw new IllegalArgumentException();
+        }
+        if (!correoElectronico.contains("@")) {
+            throw new IllegalArgumentException();
+        }
         this.nombre = nombre;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;

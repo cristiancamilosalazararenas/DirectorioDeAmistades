@@ -91,7 +91,7 @@ public class BuscarAmigo extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 110));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel1.setText("ELIMINAR AMIGO");
+        jLabel1.setText("BUSCAR AMIGO");
         jLabel1.setMaximumSize(new java.awt.Dimension(400, 47));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -101,7 +101,7 @@ public class BuscarAmigo extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
