@@ -1,4 +1,8 @@
 package autonoma.directoriodeamistades.models;
+import autonoma.directoriodeamistades.exceptions.CampoVacioException;
+import autonoma.directoriodeamistades.exceptions.CorreoRepetidoException;
+import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
+import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitos;
 import java.util.ArrayList;
 
 public class Directorio {
@@ -11,10 +15,10 @@ public class Directorio {
     }
     
     //Metodos CRUD
-    public boolean agregarAmigo(Amigo amigo){
+    public boolean agregarAmigo(Amigo amigo) throws CorreoRepetidoException, CampoVacioException, FaltaArrobaException, NoIniciaConLosDigitos {
         for(int i=0; i<this.amigos.size(); i++){
             if(this.amigos.get(i).getCorreoElectronico().equals(amigo.getCorreoElectronico())){
-                return false;
+                throw new CorreoRepetidoException();
             }
         }
         amigos.add(amigo);

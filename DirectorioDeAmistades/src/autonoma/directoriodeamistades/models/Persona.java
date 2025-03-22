@@ -1,4 +1,7 @@
 package autonoma.directoriodeamistades.models;
+import autonoma.directoriodeamistades.exceptions.CampoVacioException;
+import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
+import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitos;
 
 public abstract class Persona {
     //Atributos
@@ -7,12 +10,18 @@ public abstract class Persona {
     protected String correoElectronico;
     
     //Metodo constructor
-    public Persona(String nombre, String telefono, String correoElectronico) throws IllegalArgumentException{
-        if (this.nombre.trim().isEmpty() || this.telefono.trim().isEmpty() || this.correoElectronico.trim().isEmpty()){
-            throw new IllegalArgumentException();
+    public Persona(String nombre, String telefono, String correoElectronico) throws CampoVacioException, FaltaArrobaException, NoIniciaConLosDigitos{
+        if (nombre == null || telefono == null || correoElectronico == null){
+            throw new CampoVacioException();
+        }
+        if (nombre.trim().isEmpty() || telefono.trim().isEmpty() || correoElectronico.trim().isEmpty()){
+            throw new CampoVacioException();
         }
         if (!correoElectronico.contains("@")) {
-            throw new IllegalArgumentException();
+            throw new FaltaArrobaException();
+        }
+        if (!telefono.startsWith("606") && !telefono.startsWith("30")) {
+            throw new NoIniciaConLosDigitos();
         }
         this.nombre = nombre;
         this.telefono = telefono;

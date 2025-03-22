@@ -1,8 +1,14 @@
 package autonoma.directoriodeamistades.views;
 
+import autonoma.directoriodeamistades.exceptions.CampoVacioException;
+import autonoma.directoriodeamistades.exceptions.CorreoRepetidoException;
+import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
+import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitos;
+import autonoma.directoriodeamistades.models.Amigo;
 import autonoma.directoriodeamistades.models.Directorio;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class AgregarAmigo extends javax.swing.JDialog {
@@ -202,7 +208,26 @@ public class AgregarAmigo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAmigoActionPerformed
-        // TODO add your handling code here:
+        try {
+             String nombre = this.txtNombre.getText();
+             String telefono = this.txtTelefono.getText();
+             String correo = this.txtCorreo.getText();
+             String redSocial = this.txtRedSocial.getText();
+             Amigo amigo = new Amigo(nombre, telefono, correo, redSocial);
+             directorio.agregarAmigo(amigo);
+             JOptionPane.showMessageDialog(this, "Amigo agregado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (CorreoRepetidoException e) {
+                JOptionPane.showMessageDialog(this, "El correo ya está registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (CampoVacioException e) {
+                JOptionPane.showMessageDialog(this, "No se permiten campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (FaltaArrobaException e) {
+                JOptionPane.showMessageDialog(this, "El correo debe contener '@'", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (NoIniciaConLosDigitos e) {
+                JOptionPane.showMessageDialog(this, "El teléfono debe comenzar con 606 o 30", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_btnCrearAmigoActionPerformed
 
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered

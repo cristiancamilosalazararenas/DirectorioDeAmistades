@@ -137,12 +137,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             btnEliminarAmigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnEliminarAmigoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarAmigoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(12, 12, 12))
+                .addGroup(btnEliminarAmigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(btnEliminarAmigoLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarAmigoLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(12, 12, 12))))
         );
         btnEliminarAmigoLayout.setVerticalGroup(
             btnEliminarAmigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +375,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAcercaDe;
     private javax.swing.JPanel btnActualizarAmigo;
     private javax.swing.JPanel btnAgregarAmigo;
-    private javax.swing.JPanel btnAgregarAmigo1;
     private javax.swing.JPanel btnBuscarAmigo;
     private javax.swing.JPanel btnEliminarAmigo;
     private javax.swing.JButton btnSalir;
@@ -385,8 +385,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
