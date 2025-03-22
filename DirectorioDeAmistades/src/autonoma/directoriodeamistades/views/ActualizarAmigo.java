@@ -1,17 +1,24 @@
 package autonoma.directoriodeamistades.views;
 
+import autonoma.directoriodeamistades.models.Directorio;
 import javax.swing.ImageIcon;
 
 public class ActualizarAmigo extends javax.swing.JDialog {
+    
+    private Directorio directorio;
+    private VentanaPrincipal ventanaPrincipal;
 
-    public ActualizarAmigo(java.awt.Frame parent, boolean modal) {
+    public ActualizarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         try{
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/directoriodeamistades/images/Icono.png")).getImage());
         }catch(Exception e){
         
         }
+        this.directorio = directorio;
+        this.ventanaPrincipal = ventanaPrincipal;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

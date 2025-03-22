@@ -1,23 +1,26 @@
 package autonoma.directoriodeamistades.views;
 
-import autonoma.directoriodeamistades.models.Amigo;
+import autonoma.directoriodeamistades.models.Directorio;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class AgregarAmigo extends javax.swing.JDialog {
     
-    private Amigo amigo;
+    private Directorio directorio;
+    private VentanaPrincipal ventanaPrincipal;
 
-    public AgregarAmigo(java.awt.Frame parent, boolean modal, Amigo amigo) {
+    public AgregarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         try{
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/directoriodeamistades/images/Icono.png")).getImage());
         }catch(Exception e){
         
         }
-        this.amigo = amigo;
+        this.directorio = directorio;
+        this.ventanaPrincipal = ventanaPrincipal;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -87,6 +90,9 @@ public class AgregarAmigo extends javax.swing.JDialog {
 
         btnVolver.setBackground(new java.awt.Color(255, 255, 255));
         btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVolverMouseEntered(evt);
             }
@@ -206,6 +212,10 @@ public class AgregarAmigo extends javax.swing.JDialog {
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMouseClicked
 
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
