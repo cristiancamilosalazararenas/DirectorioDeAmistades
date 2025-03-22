@@ -1,12 +1,15 @@
 package autonoma.directoriodeamistades.views;
 
+import autonoma.directoriodeamistades.models.Directorio;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    public VentanaPrincipal() {
+    private Directorio directorio;
+    
+    public VentanaPrincipal(Directorio directorio) {
         initComponents();
         this.setLocationRelativeTo(null);
         try{
@@ -14,6 +17,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }catch(Exception e){
         
         }
+        this.directorio = directorio;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
