@@ -6,16 +6,35 @@ import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
 import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitosException;
 import autonoma.directoriodeamistades.models.Amigo;
 import autonoma.directoriodeamistades.models.Directorio;
-import java.awt.Color;
+import java.awt.Color; 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+/**
+ * JDialog para agregar nuevos amigos al directorio
+ * 
+ * @author Cristian Camilo Salazar Arenas
+ * @version 1.0
+ * @since 20250323
+ */
 
 public class AgregarAmigo extends javax.swing.JDialog {
-    
+    /**
+     * Directorio principal de la aplicación
+     */
     private Directorio directorio;
+    /**
+     * Referencia a la ventana principal para actualizaciones
+     */
     private VentanaPrincipal ventanaPrincipal;
-
+    /**
+     * Constructor que inicializa el diálogo de agregar amigo
+     * @param parent Ventana padre
+     * @param modal Modo modal
+     * @param directorio Directorio donde se agregará el amigo
+     * @param ventanaPrincipal Referencia a la ventana principal
+     * @since 1.0
+     */
     public AgregarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
@@ -206,7 +225,11 @@ public class AgregarAmigo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el proceso de creación de un nuevo amigo
+     * @param evt Evento de acción
+     * @since 1.0
+     */
     private void btnCrearAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearAmigoActionPerformed
         try {
              String nombre = this.txtNombre.getText();
@@ -229,23 +252,43 @@ public class AgregarAmigo extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_btnCrearAmigoActionPerformed
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         this.mouseEntered(btnVolver);
     }//GEN-LAST:event_btnVolverMouseEntered
-
+    /**
+     * Elimina el efecto hover del panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
-
+    /**
+     * Cierra el diálogo actual sin guardar cambios
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
+    /**
+     * Aplica efecto visual al entrar al panel
+     * @param panel Panel a modificar
+     * @since 1.0
+     */
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original al salir del panel
+     * @param panel Panel a restaurar
+     * @since 1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }

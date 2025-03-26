@@ -9,11 +9,32 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * JDialog para buscar amigos en el directorio por correo electrónico
+ * 
+ * @author Cristian Camilo Salazar Arenas
+ * @author Juan Sebastian Lopez
+ * @version 1.0
+ * @since 20250323
+ */
 public class BuscarAmigo extends javax.swing.JDialog {
-    
+    /**
+     * Directorio principal de la aplicación
+     */
     private Directorio directorio;
+    /**
+     * Referencia a la ventana principal para actualizaciones
+     */
     private VentanaPrincipal ventanaPrincipal;
 
+    /**
+     * Constructor que inicializa el diálogo de búsqueda
+     * @param parent Ventana padre
+     * @param modal Modo modal
+     * @param directorio Directorio donde se buscará el amigo
+     * @param ventanaPrincipal Referencia a la ventana principal
+     * @since 1.0
+     */
     public BuscarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
@@ -162,19 +183,35 @@ public class BuscarAmigo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Cierra el diálogo actual y vuelve a la ventana principal
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         this.mouseEntered(btnVolver);
     }//GEN-LAST:event_btnVolverMouseEntered
-
+    /**
+     * Elimina el efecto hover del panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
-
+    /**
+     * Maneja el proceso de búsqueda de un amigo por correo electrónico
+     * @param evt Evento de acción
+     * @since 1.0
+     */
     private void btnBuscarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAmigoActionPerformed
         try {
         String correo = this.txtCorreoAmigo.getText().trim();     
@@ -189,22 +226,28 @@ public class BuscarAmigo extends javax.swing.JDialog {
         if (a == null) {
             JOptionPane.showMessageDialog(this, "El amigo con correo " + correo + " no existe");
         } else {
-            JOptionPane.showMessageDialog(this, "Amigo encontrado: \n\n" + 
-                "Nombre: " + a.getNombre() + "\n" +
-                "Correo: " + a.getCorreoElectronico() + "\n" +
-                "Red Social: " + a.getNombreRedesSociales() + "\n" +
-                "Teléfono: " + a.getTelefono());
+            JOptionPane.showMessageDialog(this, "Amigo encontrado: \n\n" + "Nombre: " + a.getNombre() + "\n" +"Correo: " + a.getCorreoElectronico() + "\n" +"Red Social: " + a.getNombreRedesSociales() + "\n" +"Teléfono: " + a.getTelefono());
         }
         
-    } catch (CampoVacioException | FaltaArrobaException e) {
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    } catch (CampoVacioException e) {
+            JOptionPane.showMessageDialog(this,"Debe ingresar un correo electrónico","Error",JOptionPane.ERROR_MESSAGE);
+        } catch (FaltaArrobaException e) {
+            JOptionPane.showMessageDialog(this, "El correo debe contener el símbolo @","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuscarAmigoActionPerformed
-
+    /**
+     * Aplica efecto visual al entrar al panel
+     * @param panel Panel a modificar
+     * @since 1.0
+     */
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original al salir del panel
+     * @param panel Panel a restaurar
+     * @since 1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }

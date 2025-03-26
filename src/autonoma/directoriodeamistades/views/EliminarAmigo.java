@@ -9,12 +9,35 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * JDialog para la gestión de eliminación de amigos del directorio
+ * 
+ * @author Juan Sebastian Lopez
+ * @version 1.0
+ * @since 20250323
+ */
+
 public class EliminarAmigo extends javax.swing.JDialog {
-    
+    /**
+     * Directorio principal de la aplicación
+     */
     private Directorio directorio;
+    /**
+     * Referencia a la ventana principal para actualizaciones
+     */
     private VentanaPrincipal ventanaPrincipal;
+    /**
+     * Lista actual de amigos en el directorio
+     */
     private ArrayList<Amigo> amigos;
-    
+    /**
+     * Constructor que inicializa el diálogo de eliminación
+     * @param parent Ventana padre
+     * @param modal Modo modal
+     * @param directorio Directorio con los datos
+     * @param ventanaPrincipal Referencia a la ventana principal
+     * @since 1.0
+     */
     public EliminarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
@@ -189,19 +212,35 @@ public class EliminarAmigo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el evento de clic para volver a la ventana principal
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         this.mouseEntered(btnVolver);
     }//GEN-LAST:event_btnVolverMouseEntered
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
-
+    /**
+     * Maneja el proceso de eliminación de un amigo seleccionado
+     * @param evt Evento de acción
+     * @since 1.0
+     */
     private void btnEliminarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAmigoActionPerformed
         int filaSeleccionada = jTable1.getSelectedRow();
         if (filaSeleccionada >= 0) {
@@ -223,22 +262,33 @@ public class EliminarAmigo extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnEliminarAmigoActionPerformed
-
+    /**
+     * Aplica efecto visual al entrar al panel
+     * @param panel Panel a modificar
+     * @since 1.0
+     */
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original al salir del panel
+     * @param panel Panel a restaurar
+     * @since 1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }
-    //Metodo para llenar la tabla
+    /**
+     * Actualiza la tabla con la lista actual de amigos
+     * @since 1.0
+     */
     public void llenarTabla() {
-    DefaultTableModel model = new DefaultTableModel(new Object[]{"Nombre", "Correo", "Red Social", "Teléfono"}, 0);
-    for (Amigo amigo : amigos) {
-        model.addRow(new Object[]{amigo.getNombre(),amigo.getCorreoElectronico(),amigo.getNombreRedesSociales(),amigo.getTelefono()});
-    }
-    
-    jTable1.setModel(model);
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Nombre", "Correo", "Red Social", "Teléfono"}, 0);
+        for (Amigo amigo : amigos) {
+            model.addRow(new Object[]{amigo.getNombre(),amigo.getCorreoElectronico(),amigo.getNombreRedesSociales(),amigo.getTelefono()});
+        }
+
+        jTable1.setModel(model);
     }
     
   

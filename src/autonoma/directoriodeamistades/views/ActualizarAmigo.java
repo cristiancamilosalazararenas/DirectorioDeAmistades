@@ -9,13 +9,34 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
+/**
+ * JDialog para la actualización de información de amigos en el directorio
+ * 
+ * @author Juan Sebastian Lopez
+ * @version 1.0
+ * @since 20250323
+ */
 public class ActualizarAmigo extends javax.swing.JDialog {
-    
+    /**
+     * Directorio principal de la aplicación
+     */
     private Directorio directorio;
+    /**
+     * Referencia a la ventana principal para actualizaciones
+     */
     private VentanaPrincipal ventanaPrincipal;
+    /**
+     * Lista actual de amigos en el directorio
+     */
     private ArrayList<Amigo> amigos;
-
+    /**
+     * Constructor que inicializa el diálogo de actualización
+     * @param parent Ventana padre
+     * @param modal Modo modal
+     * @param directorio Directorio con los datos
+     * @param ventanaPrincipal Referencia a la ventana principal
+     * @since 1.0
+     */
     public ActualizarAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
@@ -183,7 +204,11 @@ public class ActualizarAmigo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el proceso de actualización de un amigo seleccionado
+     * @param evt Evento de acción
+     * @since 1.0
+     */
     private void btnActualizarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAmigoActionPerformed
         int fila = jTable1.getSelectedRow();
     if (fila >= 0) {
@@ -202,27 +227,50 @@ public class ActualizarAmigo extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Seleccione un amigo de la tabla");
     }         
     }//GEN-LAST:event_btnActualizarAmigoActionPerformed
-
+    /**
+     * Cierra el diálogo actual y vuelve a la ventana principal
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         this.mouseEntered(btnVolver);
     }//GEN-LAST:event_btnVolverMouseEntered
-
+    /**
+     * Elimina el efecto hover del panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
-
+    /**
+     * Aplica efecto visual al entrar al panel
+     * @param panel Panel a modificar
+     * @since 1.0
+     */
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original al salir del panel
+     * @param panel Panel a restaurar
+     * @since 1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }
-    
+    /**
+     * Actualiza la tabla con la lista actualizada de amigos
+     * @since 1.0
+     */
     public void llenarTabla() {
         this.amigos = directorio.getAmigos(); 
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Nombre", "Correo", "Red Social", "Teléfono"}, 0);

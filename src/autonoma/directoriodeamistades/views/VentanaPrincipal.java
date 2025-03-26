@@ -6,10 +6,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class VentanaPrincipal extends javax.swing.JFrame {
+/**
+ * JFrame VentanaPrincipal. Interfaz gráfica principal del directorio de amistades
+ * 
+ * @author  Cristian Camilo Salazar Arenas
+ * @author  Juan Sebastian Lopez
+ * @version 1.0
+ * @since   20250323
+ */
 
+public class VentanaPrincipal extends javax.swing.JFrame {
+    /**
+     * Instancia del directorio que maneja la lógica de la aplicación
+     */
     private Directorio directorio;
-    
+    /**
+     * Constructor que inicializa la ventana principal
+     * @param directorio El directorio que contendrá los datos de los amigos
+     * @since   1.0
+     */
     public VentanaPrincipal(Directorio directorio) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -338,30 +353,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnActualizarAmigoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseExited
         this.mouseExited(btnActualizarAmigo);
     }//GEN-LAST:event_btnActualizarAmigoMouseExited
-
+    /**
+     * Muestra información acerca de la aplicación
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnAcercaDeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcercaDeMouseClicked
         JOptionPane.showMessageDialog(this, "Taller: \n - Directorio de amistades \n Asignatura: \n - POO \n Universidad: \n - UAM \n Desarrolladores: \n - Juan Sebastian Lopez \n - Cristian Camilo Salazar");
     }//GEN-LAST:event_btnAcercaDeMouseClicked
-
+    /**
+     * Cierra la aplicación
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
-
+    /**
+     * Abre la ventana para agregar un nuevo amigo
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnAgregarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarAmigoMouseClicked
         AgregarAmigo agregarAmigo = new AgregarAmigo(this, true, this.directorio, this);
         agregarAmigo.setVisible(true);
     }//GEN-LAST:event_btnAgregarAmigoMouseClicked
-
+    /**
+     * Abre la ventana para eliminar un amigo existente
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnEliminarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarAmigoMouseClicked
         EliminarAmigo eliminarAmigo = new EliminarAmigo(this, true, this.directorio, this);
         eliminarAmigo.setVisible(true);
     }//GEN-LAST:event_btnEliminarAmigoMouseClicked
-
+    /**
+     * Abre la ventana para buscar un amigo en el directorio
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnBuscarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarAmigoMouseClicked
         BuscarAmigo buscarAmigo = new BuscarAmigo(this, true, this.directorio, this);
         buscarAmigo.setVisible(true);
     }//GEN-LAST:event_btnBuscarAmigoMouseClicked
-
+    /**
+     * Abre la ventana para actualizar datos de un amigo
+     * @param evt Evento del mouse
+     * @since   1.0
+     */
     private void btnActualizarAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAmigoMouseClicked
         ActualizarAmigo actualizarAmigo = new ActualizarAmigo(this, true, this.directorio, this);
         actualizarAmigo.setVisible(true);
@@ -370,11 +409,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaDeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAcercaDeActionPerformed
-
+    /**
+     * Maneja el efecto hover sobre los paneles interactivos
+     * @param panel Panel que activará el cambio de color
+     * @since   1.0
+     */
     private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original de los paneles al salir del hover
+     * @param panel Panel que restaurará su color original
+     * @since   1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }

@@ -16,15 +16,35 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Asus
+ * JDialog para modificar los datos de un amigo existente en el directorio
+ * 
+ * @author Cristian Camilo Salazar Arenas
+ * @author Juan Sebastian Lopez
+ * @version 1.0
+ * @since 20250323
  */
 public class ModificarDatosAmigo extends javax.swing.JDialog {
-
+    /**
+     * Directorio principal de la aplicación
+     */
     private Directorio directorio;
+    /**
+     * Amigo cuyos datos se están modificando
+     */
     private Amigo amigoActual;
+    /**
+     * Referencia a la ventana principal para actualizaciones
+     */
     private VentanaPrincipal ventanaPrincipal;
-
+    /**
+     * Constructor que inicializa el diálogo de modificación
+     * @param parent Ventana padre
+     * @param modal Modo modal
+     * @param directorio Directorio con los datos
+     * @param ventanaPrincipal Referencia a la ventana principal
+     * @param amigo Amigo a modificar
+     * @since 1.0
+     */
     public ModificarDatosAmigo(java.awt.Frame parent, boolean modal, Directorio directorio, VentanaPrincipal ventanaPrincipal, Amigo amigo) {
         super(parent, modal);
         initComponents();
@@ -212,7 +232,11 @@ public class ModificarDatosAmigo extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el proceso de actualización de datos del amigo
+     * @param evt Evento de acción
+     * @since 1.0
+     */
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             String nuevoNombre = txtNombre.getText().trim();
@@ -221,22 +245,22 @@ public class ModificarDatosAmigo extends javax.swing.JDialog {
             String nuevaRedSocial = txtRedSocial.getText().trim();
             String correoOriginal = amigoActual.getCorreoElectronico();
 
-            // Validar campos vacíos
+            
             if (nuevoNombre.isEmpty() || nuevoTelefono.isEmpty() || nuevoCorreo.isEmpty() || nuevaRedSocial.isEmpty()) {
                 throw new CampoVacioException();
             }
 
-            // Validar formato de correo
+           
             if (!nuevoCorreo.contains("@")) {
                 throw new FaltaArrobaException();
             }
 
-            // Validar prefijo del teléfono
+            
             if (!nuevoTelefono.startsWith("606") && !nuevoTelefono.startsWith("30")) {
                 throw new NoIniciaConLosDigitosException();
             }
 
-            // Actualizar en el directorio
+            
             boolean exito = directorio.actualizarAmigo(
                 correoOriginal, 
                 nuevoNombre, 
@@ -249,7 +273,7 @@ public class ModificarDatosAmigo extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Amigo actualizado exitosamente");
                 this.dispose();
 
-                // Reabrir ActualizarAmigo para mostrar datos actualizados
+                
                 ActualizarAmigo actualizarDialog = new ActualizarAmigo(
                     ventanaPrincipal, 
                     true, 
@@ -258,29 +282,61 @@ public class ModificarDatosAmigo extends javax.swing.JDialog {
                 );
                 actualizarDialog.setVisible(true);
             }
+        } catch (CampoVacioException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (FaltaArrobaException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NoIniciaConLosDigitosException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(this, "Error inesperado al actualizar", 
+                "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
-
+    /**
+     * Cierra el diálogo actual sin guardar cambios
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
+    /**
+     * Aplica efecto hover al panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
         this.mouseEntered(btnVolver);
     }//GEN-LAST:event_btnVolverMouseEntered
-
+    /**
+     * Elimina el efecto hover del panel de volver
+     * @param evt Evento del mouse
+     * @since 1.0
+     */
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         this.mouseExited(btnVolver);
     }//GEN-LAST:event_btnVolverMouseExited
-     private void mouseEntered(JPanel panel){
+    /**
+     * Aplica efecto visual al entrar al panel
+     * @param panel Panel a modificar
+     * @since 1.0
+     */
+    private void mouseEntered(JPanel panel){
         panel.setBackground(new Color(132,206,253));
     }
-    
+    /**
+     * Restaura el color original al salir del panel
+     * @param panel Panel a restaurar
+     * @since 1.0
+     */
     private void mouseExited(JPanel panel){
         panel.setBackground(new Color(255,255,255));
     }
+    /**
+     * Carga los datos actuales del amigo en los campos del formulario
+     * @since 1.0
+     */
     private void cargarDatosAmigo() {
         txtNombre.setText(amigoActual.getNombre());
         txtTelefono.setText(amigoActual.getTelefono());
