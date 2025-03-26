@@ -6,7 +6,7 @@ package autonoma.directoriodeamistades.views;
 
 import autonoma.directoriodeamistades.exceptions.CampoVacioException;
 import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
-import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitos;
+import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitosException;
 import autonoma.directoriodeamistades.models.Amigo;
 import autonoma.directoriodeamistades.models.Directorio;
 import java.awt.Color;
@@ -233,7 +233,7 @@ public class ModificarDatosAmigo extends javax.swing.JDialog {
 
             // Validar prefijo del teléfono
             if (!nuevoTelefono.startsWith("606") && !nuevoTelefono.startsWith("30")) {
-                throw new NoIniciaConLosDigitos();
+                throw new NoIniciaConLosDigitosException();
             }
 
             // Actualizar en el directorio

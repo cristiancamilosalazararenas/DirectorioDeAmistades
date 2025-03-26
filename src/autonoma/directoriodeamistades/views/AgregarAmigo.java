@@ -3,7 +3,7 @@ package autonoma.directoriodeamistades.views;
 import autonoma.directoriodeamistades.exceptions.CampoVacioException;
 import autonoma.directoriodeamistades.exceptions.CorreoRepetidoException;
 import autonoma.directoriodeamistades.exceptions.FaltaArrobaException;
-import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitos;
+import autonoma.directoriodeamistades.exceptions.NoIniciaConLosDigitosException;
 import autonoma.directoriodeamistades.models.Amigo;
 import autonoma.directoriodeamistades.models.Directorio;
 import java.awt.Color;
@@ -223,7 +223,7 @@ public class AgregarAmigo extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "No se permiten campos vacíos", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (FaltaArrobaException e) {
                 JOptionPane.showMessageDialog(this, "El correo debe contener '@'", "Error", JOptionPane.ERROR_MESSAGE);
-            } catch (NoIniciaConLosDigitos e) {
+            } catch (NoIniciaConLosDigitosException e) {
                 JOptionPane.showMessageDialog(this, "El teléfono debe comenzar con 606 o 30", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
